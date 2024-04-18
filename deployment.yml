@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: av-bill-webappdeployment
+  name: 0627backend-webappdeployment
 spec:
    replicas: 1
    strategy:
      type: Recreate
    selector:
      matchLabels:
-       app: av-bill-webapp
+       app: 0627backend
    template:
      metadata:
-       name: av-bill-webapppod
+       name: 0627backendpod
        labels:
-        app: av-bill-webapp
+        app: 0627backend
      spec:
        containers:
-      - name: av-bill-webappcontainer
-        image: vaishnavi062/av-bill-webapp
+      - name: 0627backendcontainer
+        image: vaishnavi062/0627backend
         ports:
         - containerPort: 8080
 
@@ -26,11 +26,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-   name: av-bill-webappsvc
+   name: 0627backendsvc
 spec:
    type: NodePort
    selector:
-    app: av-bill-webapp
+    app: 0627backend
    ports:
    - port: 80
      targetPort: 8080
